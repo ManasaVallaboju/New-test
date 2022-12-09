@@ -3,7 +3,26 @@ var app = express()
 
 app.use(express.static(__dirname+'/public'))
 app.use(express.json());
-app.use(express.urlencoded({extends: false}));
+app.use(express.urlencoded({ extended: false }));
+
+const cardList = [
+    {
+        title: "image 2",
+        image: "images/image 2.jpg",
+        link: "About image 2",
+        desciption: "Demo desciption about image 2"
+    },
+    {
+        title: "image 3",
+        image: "images/image 3.jpg",
+        link: "About image 3",
+        desciption: "Demo desciption about image 3"
+    }
+]
+
+app.get('/api/projects',(req,res) => {
+    res.json({statusCode: 200, data: cardList, message:"Success"})
+})
 
 // const addNumbers = (number1, number2) => {
 //     var num1 = parseInt(number1)

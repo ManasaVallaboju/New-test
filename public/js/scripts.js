@@ -1,24 +1,30 @@
-const cardList = [​
-    {​
-        title: "image 2",​
-        image: "images/image 2.png",​
-        link: "About image 2",​
-        desciption: "Demo desciption about kitten 2"​
-    },​
-    {
-        title: "image 3",​
-        image: "images/image 3.png",​
-        link: "About image 3",​
-        desciption: "Demo desciption about image 3"​
-    }​
-]​
+//const cardList = [​
+//{​
+//    title: "image 2",​
+//    image: "images/image 2.png",​
+//    link: "About image 2",​
+//    desciption: "Demo desciption about kitten 2"​
+//},​
+//{
+//title: "image 3",​
+// image: "images/image 3.png",​
+//   link: "About image 3",​
+//     desciption: "Demo desciption about image 3"​
+//   }​
+//]​
+
+const getProjects = () => {
+    $.get('/api/projects',(response) => {
+        if(response.statusCode==200){
+            addCards(response.data);
+        }
+    })
+}
 
 const clickMe = () => {​
     alert("Thanks for clicking me. Hope you have a nice day!")​
 
 }​
-
-​
 
 const submitForm = () => {​
     let formData = {};​
@@ -49,6 +55,7 @@ $(document).ready(function(){​
     $('#formSubmit').click(()=>{​
         submitForm();​
     })​
-    addCards(cardList);​
+    getProjects(cardList);​
     $('.modal').modal();​
   });​
+
